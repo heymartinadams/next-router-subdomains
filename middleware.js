@@ -13,7 +13,7 @@ export const config = {
 	]
 }
 
-export default async (req, ev) => {
+export default async (req, _) => {
 	const hostname = req.headers.get('host')
 
 	let { pathname, search } = new URL(req.nextUrl)
@@ -24,9 +24,17 @@ export default async (req, ev) => {
 	if (host === 'a') {
 		const url = new URL(`/_sites/${host}${pathname}${search}`, req.nextUrl)
 
-		console.log(`→ rewrite() to ${url.toString()}`)
+		if (pathname === '/static-props') {
+			console.log(`→ rewrite() to ${url.toString()}`)
+			return NextResponse.rewrite(url)
+		}
 
-		return NextResponse.rewrite(url)
+		if (pathname === '/server-side-props') {
+			// See: https://github.com/vercel/next.js/pull/41380#issue-1407167566
+			const headers = new Headers(req.headers)
+			headers.set('x-custom', 'yay 🎉')
+			return NextResponse.rewrite(url, { request: headers })
+		}
 	}
 
 	console.log('→ next()')
