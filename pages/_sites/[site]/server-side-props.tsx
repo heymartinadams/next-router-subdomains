@@ -2,7 +2,7 @@
 import { useRouter } from 'next/router'
 
 export const getServerSideProps = async ({ req }) => {
-	return { props: { data: req.headers['x-middleware-request-custom'] } }
+	return { props: { data: req.headers } }
 }
 
 export default function Site({ data }) {
