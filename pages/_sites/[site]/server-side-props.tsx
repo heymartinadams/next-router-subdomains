@@ -1,15 +1,6 @@
 /** Add your relevant code here for the issue to reproduce */
 import { useRouter } from 'next/router'
 
-export const getStaticPaths = async () => {
-	const subdomains = ['a']
-
-	return {
-		paths: subdomains?.map(subdomain => ({ params: { site: subdomain } })) || [],
-		fallback: false
-	}
-}
-
 export const getServerSideProps = async ({ req }) => {
 	return { props: { data: req.headers['x-custom'] } }
 }
