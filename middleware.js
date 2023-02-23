@@ -32,7 +32,7 @@ export default async (req, _) => {
 		if (pathname === '/server-side-props') {
 			// See: https://github.com/vercel/next.js/pull/41380#issue-1407167566
 			const headers = new Headers(req.headers)
-			headers.set('x-middleware-request-custom', 'yay 🎉')
+			headers.set('custom', 'yay 🎉')
 			console.log(`→ rewrite() to ${url.toString()} with headers`)
 			return NextResponse.rewrite(url, { request: headers })
 		}
