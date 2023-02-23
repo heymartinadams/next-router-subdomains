@@ -18,7 +18,7 @@ export default async (req, _) => {
 
 	let { pathname, search } = new URL(req.nextUrl)
 
-	const host = hostname.replace(`.ecstatic.dev`, '')
+	const host = hostname.replace(`.ecstatic.run`, '')
 
 	// Subdomain
 	if (host === 'a') {
