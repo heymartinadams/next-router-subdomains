@@ -1,6 +1,5 @@
 /** Add your relevant code here for the issue to reproduce */
 import { useRouter } from 'next/router'
-import { useRef } from 'react'
 
 export const getStaticPaths = async () => {
 	const subdomains = ['a']
@@ -21,10 +20,6 @@ export default function Site({ data }) {
 
   const router = useRouter()
   const { query: { site }, pathname } = router
-
-  const renderCounter  = useRef(0);
-
-  renderCounter.current++
 
   return (
     <>

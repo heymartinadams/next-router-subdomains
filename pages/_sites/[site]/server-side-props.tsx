@@ -1,6 +1,14 @@
 /** Add your relevant code here for the issue to reproduce */
 import { useRouter } from 'next/router'
-import { useRef } from 'react'
+
+export const getStaticPaths = async () => {
+	const subdomains = ['a']
+
+	return {
+		paths: subdomains?.map(subdomain => ({ params: { site: subdomain } })) || [],
+		fallback: false
+	}
+}
 
 export const getServerSideProps = async ({ req }) => {
 	return { props: { data: req.headers['x-custom'] } }
@@ -11,10 +19,6 @@ export default function Site({ data }) {
 
   const router = useRouter()
   const { query: { site }, pathname } = router
-
-  const renderCounter  = useRef(0);
-
-  renderCounter.current++
 
   return (
     <>
