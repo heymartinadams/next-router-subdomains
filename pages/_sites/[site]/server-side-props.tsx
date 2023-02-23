@@ -7,7 +7,7 @@ export const getServerSideProps = async ({ req }) => {
 }
 
 export default function Site({ data }) {
-  console.log('getStaticProps →', data)
+  console.log('getServerSideProps →', data)
 
   const router = useRouter()
   const { query: { site }, pathname } = router
