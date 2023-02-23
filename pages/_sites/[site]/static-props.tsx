@@ -28,21 +28,16 @@ export default function Site({ data }) {
 
   return (
     <>
+      <div>data from `getStaticProps`: <span>{data}</span></div>
+
       <button onClick={() => {
         router.push(
-          {
-            pathname,
-            query: { site, hello: 'world' },
-          },
-          { pathname: '/', query: { hello: 'world' } },
-          { shallow: true }
+          { pathname: '/server-side-props', query: { site } },
+          { pathname: '/server-side-props', query: {} },
         )
       }}>
-        Shallow routing
+        Check out `getServerSide`
       </button>
-
-      <p>Renders: {renderCounter.current}</p>
-
     </>    
   )
 }
