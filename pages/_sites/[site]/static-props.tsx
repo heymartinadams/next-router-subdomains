@@ -11,19 +11,19 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-	return { props: { data: 'yay 🎉' } }
+	return { props: { params: 'yay 🎉' } }
 }
 
 
-export default function Site({ data }) {
-  console.log('getStaticProps →', data)
+export default function Site({ params }) {
+  console.log('getStaticProps →', params)
 
   const router = useRouter()
   const { query: { site }, pathname } = router
 
   return (
     <>
-      <div>data from `getStaticProps`: <span>{data ?? 'undefined'}</span></div>
+      <div>data from `getStaticProps`: <span>{params ?? 'undefined'}</span></div>
 
       <button onClick={() => {
         router.push(

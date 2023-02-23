@@ -1,19 +1,19 @@
 /** Add your relevant code here for the issue to reproduce */
 import { useRouter } from 'next/router'
 
-export const getServerSideProps = async ({ req }) => {
-	return { props: { data: req.headers } }
+export const getServerSideProps = async ({ params }) => {
+	return { props: { params } }
 }
 
-export default function Site({ data }) {
-  console.log('getServerSideProps →', data)
+export default function Site({ params }) {
+  console.log('getServerSideProps →', params)
 
   const router = useRouter()
   const { query: { site }, pathname } = router
 
   return (
     <>
-      <div>data from `getServerSideProps`: <span>{data ?? 'undefined'}</span></div>
+      <div>data from `getServerSideProps`: <span>{params ?? 'undefined'}</span></div>
 
       <button onClick={() => {
         router.push(
