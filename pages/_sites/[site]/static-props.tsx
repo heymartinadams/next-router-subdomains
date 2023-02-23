@@ -23,7 +23,7 @@ export default function Site({ data }) {
 
   return (
     <>
-      <div>data from `getStaticProps`: <span>{data}</span></div>
+      <div>data from `getStaticProps`: <span>{data ?? 'undefined'}</span></div>
 
       <button onClick={() => {
         router.push(
