@@ -26,7 +26,7 @@ export default async (req, ev) => {
 
 		console.log(`→ rewrite() to ${url.toString()}`)
 
-		return NextResponse.rewrite(new URL(`/_sites/${host}${pathname}${search}`, req.nextUrl))
+		return NextResponse.rewrite(url)
 	}
 
 	console.log('→ next()')

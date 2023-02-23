@@ -12,11 +12,13 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-	return { props: { data: 'some-data' } }
+	return { props: { data: 'yay 🎉' } }
 }
 
 
-export default function Site() {
+export default function Site({ data }) {
+  console.log('getStaticProps →', data)
+
   const router = useRouter()
   const { query: { site }, pathname } = router
 
